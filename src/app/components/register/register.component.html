@@ -1,0 +1,154 @@
+<!-- <form (ngSubmit)="onSubmit(newStudentForm)" #newStudentForm="ngForm">
+  <div class="mb-3">
+      <label for="firstName" class="form-label">first name</label>
+      <input
+          required
+          minlength="3"
+          maxlength="10"
+          [(ngModel)]="newStudent.first_name"
+          #firstNameModel = "ngModel"
+          name="first_name"
+          type="text"
+          class="form-control"
+          placeholder="first name"
+      >
+      <div [hidden]="firstNameModel.valid || firstNameModel.untouched" class="alert alert-danger form-text">first name must be required and min 3 and max 3</div>
+  </div>
+  <div class="mb-3">
+      <label for="lastName" class="form-label">last name</label>
+      <input
+          required
+          minlength="3"
+          maxlength="10"
+          [(ngModel)]="newStudent.last_name"
+          name="last_name"
+          type="text"
+          #secondNameModel = "ngModel"
+          class="form-control"
+          placeholder="last name"
+      >
+      <div [hidden]="secondNameModel.valid || secondNameModel.untouched" class="alert alert-danger form-text">second name must be required and min 3 and max 3</div>
+  </div>
+  <div class="mb-3">
+      <label for="age" class="form-label">age</label>
+      <input
+          min="7"
+          max="21"
+          [(ngModel)]="newStudent.age"
+          #ageModel="ngModel"
+          name="age"
+          type="number"
+          class="form-control"
+          placeholder="age"
+      >
+      <div [hidden]="ageModel.valid || ageModel.untouched" class="alert alert-danger form-text">age must be between 7 and 21</div>
+  </div>
+  <select
+      [(ngModel)]="newStudent.grade"
+      name="grade"
+      required
+      class="form-select mb-3"
+      #gradeModel="ngModel"
+  >
+      <option selected value="">no grade selected</option>
+      <option value="1">first</option>
+      <option value="2">second</option>
+      <option value="3">third</option>
+      <option value="4">fourth</option>
+      <option value="5">fifth</option>
+      <option value="6">sixth</option>
+      <option value="7">seventh</option>
+      <option value="8">eighth</option>
+      <option value="9">ninth</option>
+      <option value="10">tenth</option>
+      <option value="11">eleventh</option>
+      <option value="12">twelfth</option>
+  </select>
+  <div [hidden]="gradeModel.valid || gradeModel.untouched" class="alert alert-danger form-text">please select grade</div>
+  <button [disabled]="!newStudentForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div> -->
+<div class="container " >
+  <h3 class="h3">Register Form</h3>
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+  <div class="mb-3">
+    <label for="firstName" class="form-label">First Name</label>
+    <input #firstName="ngModel" type="text" class="form-control" ngModel name="firstName"
+    required
+    minlength="4"
+    maxlength="10"
+    placeholder="first name">
+      <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger form-text" >First name must be required and between 3 and 10</div>
+          <!-- <div *ngIf="firstName.touched && firstName.errors.required" class="alert alert-danger form-text">first name must be required and min 3 and max 3</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
+    <input #lastName="ngModel" type="text" class="form-control" ngModel name="lastName" required minlength="4" maxlength="10" placeholder="last name">
+      <div *ngIf="lastName.invalid && lastName.touched" class="alert alert-danger form-text" >Last name must be required and between 3 and 10</div>
+  </div>
+      <div class="mb-3">
+        <!-- <div *ngIf="getNameControl()?.invalid && getNameControl()?.touched" class="alert alert-danger form-text"></div> -->
+    <label for ="age" class="form-label">age</label>
+    <input #age="ngModel" type="number" class="form-control" name="age" ngModel required  min="7" max="21"
+
+
+    placeholder="age">
+    <div *ngIf="age.invalid && age.touched" class="alert alert-danger form-text" >age must be required and between 7 and 21 </div>
+  </div>
+  <div class="mb-3 ">
+    <label for="email" class="form-label">Email Address</label>
+    <input #email="ngModel" type="email" class="form-control" name="email" ngModel required email>
+    <div *ngIf="email.invalid && email.touched" class="alert alert-danger form-text" >not valid email </div>
+
+  </div>
+  <div class="mb-3 ">
+    <label for="email" class="form-label">Password</label>
+    <input #password="ngModel" type="password" class="form-control" name="password" ngModel required minlength="6">
+    <div *ngIf="password.invalid && password.touched" class="alert alert-danger form-text" >not valid password </div>
+  </div>
+
+  <div class="mb-3 ">
+    <label for="Password" class="form-label">Confirm Password</label>
+    <input #confirmPassword="ngModel" type="password" class="form-control" name="confirmPassword" ngModel required minlength="6" >
+    <div *ngIf="confirmPassword.invalid && confirmPassword.touched " class="alert alert-danger form-text" >not valid password </div>
+  </div>
+
+  <div class="mb-3 ">
+    <label for="confirmPassword" class="form-label">Address</label>
+    <div class="col-md-4">
+      <label for="inputCity" class="form-label" >City</label>
+      <input #city ="ngModel" type="text" class="form-control" name="City" ngModel required>
+    </div>
+    <div *ngIf="city.invalid && city.touched" class="alert alert-danger form-text" >this feiled is required </div>
+    <div class="col-md-4">
+      <label for="inputCity" class="form-label">State</label>
+      <input #state="ngModel" type="text" class="form-control" name="state" ngModel required>
+    </div>
+    <div *ngIf="state.invalid && state.touched" class="alert alert-danger form-text" >this feiled is required </div>
+    <div class="col-md-4">
+      <label for="inputCity" class="form-label">Country</label>
+      <input #country="ngModel" type="text" class="form-control" name="Country" ngModel required>
+    </div>
+    <div *ngIf="country.invalid && country.touched" class="alert alert-danger form-text" >this feiled is required </div>
+
+  </div>
+  <select #grade="ngModel" name="grader" ngModel required class="form-select mb-3"
+  >
+      <option selected value="">no grade selected</option>
+      <option value="1">first</option>
+      <option value="2">second</option>
+      <option value="3">third</option>
+      <option value="4">fourth</option>
+      <option value="5">fifth</option>
+      <option value="6">sixth</option>
+      <option value="7">seventh</option>
+      <option value="8">eighth</option>
+      <option value="9">ninth</option>
+      <option value="10">tenth</option>
+      <option value="11">eleventh</option>
+      <option value="12">twelfth</option>
+  </select>
+  <div *ngIf="grade.invalid && grade.touched" class="alert alert-danger form-text">please select grade</div>
+  <button type="submit" class="btn btn-danger" >Submit</button>
+</form>
+</div>
